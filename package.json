@@ -1,0 +1,19 @@
+{
+  "name": "uport-email-verification",
+  "version": "1.0.0",
+  "scripts": {
+    "client": "cd client && npm run start",
+    "server": "nodemon server.js",
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
+  },
+  "dependencies": {
+    "babel-runtime": "^6.26.0",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "uport": "^0.6.2",
+    "uport-verify-email": "^1.0.0"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.0"
+  }
+}
