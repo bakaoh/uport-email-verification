@@ -1,3 +1,4 @@
+const serverless = require('serverless-http');
 const bodyParser = require('body-parser');
 const express = require('express')
 const app = express()
@@ -62,3 +63,5 @@ app.post('/verify', function (req, res) {
 })
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
+
+module.exports.handler = serverless(app);

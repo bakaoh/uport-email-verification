@@ -10,3 +10,11 @@ $ npm install
 $ cd ..
 $ npm run dev
 ```
+
+## Deploy serverless
+Set Environment variables `PORT`, `APP_NAME`, `ADDRESS`, `PRIVATE_KEY`, `EMAIL_USER`, `EMAIL_PASS` in `serverless.yml`
+
+```
+$ npm install -g serverless
+$ serverless deploy
+```
