@@ -37,11 +37,22 @@ const verifier = new EmailVerifier({
     attestationSubject: 'uPort Email Attestation',
     attestationTemplate: qr => `<html>...${qr}...</html>`,
     customRequestParams: {},
+    qrFolder: '/tmp/'
 });
 
 app.use(bodyParser.json({ strict: false }));
 
+app.options("/*", function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    const allowHeader = req.header("Access-Control-Request-Headers");
+    res.header("Access-Control-Allow-Headers", allowHeader ? allowHeader : "*");
+    res.send(200);
+});
+
 app.post('/register', function (req, res) {
+    res.header("Access-Control-Allow-Origin", "*");
+
     // endpoint reads email from request params
     const email = req.body.email;
 
@@ -52,6 +63,8 @@ app.post('/register', function (req, res) {
 })
 
 app.post('/verify', function (req, res) {
+    res.header("Access-Control-Allow-Origin", "*");
+
     // endpoint reads access token from POST data
     const accessToken = req.body.access_token;
 
